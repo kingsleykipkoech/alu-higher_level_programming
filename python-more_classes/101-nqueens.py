@@ -30,7 +30,10 @@ def get_solution(board):
 
 
 def x_out(board, row, col):
-    """X out spots on a chessboard where non-attacking queens cannot be placed."""
+    """X out spots on a chessboard.
+
+    X out spots where non-attacking queens cannot be placed.
+    """
     # X out all forward spots
     for c in range(col + 1, len(board)):
         board[row][c] = "x"
