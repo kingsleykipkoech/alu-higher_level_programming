@@ -1,0 +1,52 @@
+The ``0-add_integer`` module
+===========================
+
+Using ``add_integer``
+---------------------
+
+Importing the function:
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Adding two integers:
+    >>> add_integer(1, 2)
+    3
+
+Adding with default b (98):
+    >>> add_integer(2)
+    100
+
+Adding negative numbers:
+    >>> add_integer(100, -2)
+    98
+
+Adding floats (casted to int):
+    >>> add_integer(100.3, -2)
+    98
+
+Adding float and float:
+    >>> add_integer(2.3, 4.7)
+    6
+
+Passing string for b:
+    >>> add_integer(4, "School")
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+Passing None for a:
+    >>> add_integer(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Passing string for a:
+    >>> add_integer("Hello", 5)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Passing float Infinity for a:
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+        ...
+    OverflowError: cannot convert float infinity to integer
