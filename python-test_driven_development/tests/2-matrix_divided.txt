@@ -40,9 +40,21 @@ Single row matrix:
     >>> matrix_divided([[1, 2, 3]], 2)
     [[0.5, 1.0, 1.5]]
 
+Single element matrix:
+    >>> matrix_divided([[10]], 5)
+    [[2.0]]
+
 Dividing by infinity:
     >>> matrix_divided([[1, 2], [3, 4]], float('inf'))
     [[0.0, 0.0], [0.0, 0.0]]
+
+Matrix with mixed int and float:
+    >>> matrix_divided([[1, 2.5], [3, 4.5]], 2)
+    [[0.5, 1.25], [1.5, 2.25]]
+
+Matrix with negative values:
+    >>> matrix_divided([[-1, -2], [-3, -4]], 2)
+    [[-0.5, -1.0], [-1.5, -2.0]]
 
 Dividing by zero:
     >>> matrix_divided([[1, 2], [3, 4]], 0)
@@ -98,8 +110,18 @@ Missing one argument:
         ...
     TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
-Div is a bool:
-    >>> matrix_divided([[1, 2], [3, 4]], True)
+Matrix is None:
+    >>> matrix_divided(None, 2)
     Traceback (most recent call last):
         ...
-    TypeError: div must be a number
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Matrix with tuple inside:
+    >>> matrix_divided([(1, 2), (3, 4)], 2)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Div is a boolean:
+    >>> matrix_divided([[1, 2], [3, 4]], True)
+    [[1.0, 2.0], [3.0, 4.0]]

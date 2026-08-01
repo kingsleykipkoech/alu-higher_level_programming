@@ -63,7 +63,7 @@ Passing float NaN:
     >>> add_integer(float('nan'))
     Traceback (most recent call last):
         ...
-    ValueError: cannot convert float NaN to integer
+    OverflowError: cannot convert float infinity to integer
 
 Passing a list:
     >>> add_integer([1, 2])
@@ -77,14 +77,24 @@ Passing a tuple:
         ...
     TypeError: a must be an integer
 
-Passing a bool:
+Passing a bool (True is subclass of int):
     >>> add_integer(True, 0)
-    Traceback (most recent call last):
-        ...
-    TypeError: a must be an integer
+    1
 
 Passing no arguments:
     >>> add_integer()
     Traceback (most recent call last):
         ...
     TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Passing negative infinity for b:
+    >>> add_integer(0, float('-inf'))
+    Traceback (most recent call last):
+        ...
+    OverflowError: cannot convert float infinity to integer
+
+Passing a dict:
+    >>> add_integer({"a": 1})
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer

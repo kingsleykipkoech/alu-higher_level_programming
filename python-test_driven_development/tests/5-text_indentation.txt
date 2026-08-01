@@ -37,9 +37,19 @@ Text with no delimiters:
 Empty string:
     >>> text_indentation("")
 
-Single delimiter:
+Single delimiter period:
     >>> text_indentation(".")
     .
+    <BLANKLINE>
+
+Single delimiter question mark:
+    >>> text_indentation("?")
+    ?
+    <BLANKLINE>
+
+Single delimiter colon:
+    >>> text_indentation(":")
+    :
     <BLANKLINE>
 
 Text with only spaces after delimiter:
@@ -85,3 +95,21 @@ Text is a list:
     Traceback (most recent call last):
         ...
     TypeError: text must be a string
+
+Single word no delimiter:
+    >>> text_indentation("Hello")
+    Hello
+
+Text with only period:
+    >>> text_indentation("Word.")
+    Word.
+    <BLANKLINE>
+
+Text with multiple spaces between words:
+    >>> text_indentation("Hello.    How?    What:")
+    Hello.
+    <BLANKLINE>
+    How?
+    <BLANKLINE>
+    What:
+    <BLANKLINE>
