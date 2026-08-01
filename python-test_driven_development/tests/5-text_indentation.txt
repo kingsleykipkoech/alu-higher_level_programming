@@ -18,8 +18,70 @@ Indent text with delimiters:
     thanks.
     <BLANKLINE>
 
-Text is not a string:
+Text is not a string (integer):
     >>> text_indentation(123)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Text is not a string (None):
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Text with no delimiters:
+    >>> text_indentation("Hello World")
+    Hello World
+
+Empty string:
+    >>> text_indentation("")
+
+Single delimiter:
+    >>> text_indentation(".")
+    .
+    <BLANKLINE>
+
+Text with only spaces after delimiter:
+    >>> text_indentation("Hello.   World")
+    Hello.
+    <BLANKLINE>
+    World
+
+Text ending without delimiter:
+    >>> text_indentation("Hello? World")
+    Hello?
+    <BLANKLINE>
+    World
+
+Text with consecutive delimiters:
+    >>> text_indentation("Hello.:?")
+    Hello.
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+
+No arguments:
+    >>> text_indentation()
+    Traceback (most recent call last):
+        ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+Text with leading spaces:
+    >>> text_indentation("   Hello.")
+    Hello.
+    <BLANKLINE>
+
+Text with colon:
+    >>> text_indentation("Name: John")
+    Name:
+    <BLANKLINE>
+    John
+
+Text is a list:
+    >>> text_indentation(["Hello"])
     Traceback (most recent call last):
         ...
     TypeError: text must be a string
